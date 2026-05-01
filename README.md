@@ -4,17 +4,33 @@ A Kivy desktop app for helping college students manage daily routines, budgets, 
 
 ## Technology Versions
 
-- Python: 3.11 or newer
+- Python: 3.11 or 3.12, official 64-bit CPython recommended
 - Tested with Python: 3.12.13
 - Kivy: 2.3.0
+
+Avoid Python 3.13 or MSYS2/MinGW Python for this project. If pip cannot find a Kivy wheel, it may try to build Kivy from source and fail while installing build dependencies.
 
 ## Build and Run
 
 1. Open a terminal in the project root.
 2. Create a virtual environment.
 
+Windows PowerShell:
+
 ```powershell
-python -m venv .venv
+py -3.12 -m venv .venv
+```
+
+If `py -3.12` is not available, install Python 3.12 from python.org or use Python 3.11.
+
+```powershell
+py -3.11 -m venv .venv
+```
+
+macOS/Linux:
+
+```bash
+python3.12 -m venv .venv
 ```
 
 3. Activate the virtual environment.
@@ -31,7 +47,13 @@ Windows Command Prompt:
 .venv\Scripts\activate.bat
 ```
 
-macOS/Linux/Git Bash:
+Windows Git Bash:
+
+```bash
+source .venv/Scripts/activate
+```
+
+macOS/Linux:
 
 ```bash
 source .venv/bin/activate
@@ -65,11 +87,39 @@ Windows:
 .\.venv\Scripts\python.exe main.py
 ```
 
-macOS/Linux/Git Bash:
+macOS/Linux:
 
 ```bash
 ./.venv/bin/python -m pip install -r requirements.txt
 ./.venv/bin/python main.py
+```
+
+## Kivy Install Troubleshooting
+
+If installation fails with a message like `Failed to build kivy` or `installing build dependencies for kivy`, the wrong Python version or Python distribution is usually being used.
+
+Check your Python version:
+
+```powershell
+python --version
+where python
+```
+
+Use official Python 3.11 or 3.12 from python.org, then recreate the virtual environment:
+
+```powershell
+Remove-Item .venv -Recurse -Force
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe main.py
+```
+
+On Linux/Codespaces, Kivy may also need desktop graphics libraries before it can open a window:
+
+```bash
+sudo apt update
+sudo apt install -y libgl1 libmtdev1 libsdl2-2.0-0
 ```
 
 ## Project Files
