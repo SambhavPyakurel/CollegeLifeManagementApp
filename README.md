@@ -11,29 +11,65 @@ A Kivy desktop app for helping college students manage daily routines, budgets, 
 ## Build and Run
 
 1. Open a terminal in the project root.
-2. Create and activate a virtual environment.
+2. Create a virtual environment.
 
 ```powershell
 python -m venv .venv
+```
+
+3. Activate the virtual environment.
+
+Windows PowerShell:
+
+```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-3. Install dependencies.
+Windows Command Prompt:
 
-```powershell
-pip install -r requirements.txt
+```bat
+.venv\Scripts\activate.bat
 ```
 
-4. Run the application.
+macOS/Linux/Git Bash:
+
+```bash
+source .venv/bin/activate
+```
+
+4. Install dependencies.
+
+```powershell
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+5. Run the application.
 
 ```powershell
 python main.py
 ```
 
-On Windows, you can also use the provided helper script:
+On Windows PowerShell, you can also use the provided helper script:
 
 ```powershell
 .\run_app.ps1
+```
+
+If activation does not work, run through the virtual environment's Python directly.
+
+Windows:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe main.py
+```
+
+macOS/Linux/Git Bash:
+
+```bash
+./.venv/bin/python -m pip install -r requirements.txt
+./.venv/bin/python main.py
 ```
 
 ## Project Files
@@ -63,3 +99,4 @@ The app stores data locally in `data/app_state.json`. This includes tasks, trans
 
 - The app is local/offline and does not require a network connection.
 - If the UI appears unusually large or small, adjust the window size or the font size slider in Settings.
+- Codespaces/Linux environments may need extra GUI libraries before Kivy can open a window, such as `libgl1`, `libmtdev1`, and `libsdl2-2.0-0`.
