@@ -84,6 +84,8 @@ class BudgetScreen(BaseScreen):
                 color=self.app.muted_text_color,
                 font_size="14sp",
             ))
+            self._apply_font_scale(box)
+            self._apply_theme_colors(box)
             return
 
         for tx in reversed(self.app.state.transactions[-5:]):
@@ -93,6 +95,7 @@ class BudgetScreen(BaseScreen):
                 color=self.app.text_color,
                 halign="left",
                 valign="middle",
+                font_size="16sp",
             ))
             delete = Button(
                 text="Delete",
@@ -105,6 +108,8 @@ class BudgetScreen(BaseScreen):
             delete.bind(on_release=lambda _, tx_id=tx["id"]: self.delete_transaction(tx_id))
             row.add_widget(delete)
             box.add_widget(row)
+        self._apply_font_scale(box)
+        self._apply_theme_colors(box)
 
     def delete_transaction(self, tx_id):
         self.app.state.transactions = [

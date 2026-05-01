@@ -29,7 +29,7 @@ class AutoFitButton(Button):
     def _remember_preferred(self, *_):
         if self._fitting:
             return
-        self._preferred_font_size = max(self._preferred_font_size, float(self.font_size))
+        self._preferred_font_size = float(self.font_size)
         self._schedule_fit()
 
     def _schedule_fit(self, *_):

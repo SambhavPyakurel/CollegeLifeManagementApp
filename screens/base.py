@@ -24,12 +24,12 @@ class BaseScreen(Screen):
         self.go(mapping[tab_name])
 
     def _apply_font_scale(self, widget):
-        scale = float(self.app.layout_scale)
+        scale = float(self.app.font_scale) * float(self.app.layout_scale)
         if hasattr(widget, "font_size"):
             try:
-                if not hasattr(widget, "_base_font_size"):
-                    widget._base_font_size = float(widget.font_size)
-                widget.font_size = max(10, widget._base_font_size * scale)
+                if not hasattr(widget, "_font_size_base_unscaled"):
+                    widget._font_size_base_unscaled = float(widget.font_size)
+                widget.font_size = max(9, widget._font_size_base_unscaled * scale)
             except Exception:
                 pass
         if hasattr(widget, "children"):

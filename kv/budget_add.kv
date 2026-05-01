@@ -20,7 +20,7 @@
                 text: 'Budget Tracker'
                 color: app.text_color
                 bold: True
-                font_size: app.sp(32)
+                font_size: '32sp'
 
         BoxLayout:
             orientation: 'vertical'
@@ -43,7 +43,7 @@
                     text: 'Add Transaction'
                     color: app.text_color
                     bold: True
-                    font_size: app.sp(30)
+                    font_size: '30sp'
                     size_hint_y: .14
                     halign: 'left'
                     text_size: self.size
@@ -55,7 +55,7 @@
                     background_color: (1,1,1,1)
                     foreground_color: app.text_color
                     hint_text_color: app.muted_text_color
-                    font_size: app.sp(22)
+                    font_size: '22sp'
                     size_hint_y: .16
 
                 TextInput:
@@ -66,7 +66,7 @@
                     background_color: (1,1,1,1)
                     foreground_color: app.text_color
                     hint_text_color: app.muted_text_color
-                    font_size: app.sp(22)
+                    font_size: '22sp'
                     size_hint_y: .16
 
                 Widget:
@@ -80,7 +80,7 @@
                         background_color: app.header_color
                         color: app.text_color
                         bold: True
-                        font_size: app.sp(22)
+                        font_size: '22sp'
                         on_release: root.confirm()
                     Button:
                         text: 'Cancel'
@@ -88,7 +88,7 @@
                         background_color: app.header_color
                         color: app.text_color
                         bold: True
-                        font_size: app.sp(22)
+                        font_size: '22sp'
                         on_release: root.cancel()
 
             Button:
@@ -98,5 +98,5 @@
                 background_color: (0.85,0.15,0.15,1)
                 color: (1,1,1,1)
                 bold: True
-                font_size: app.sp(20)
+                font_size: '20sp'
                 on_release: root.delete_last()

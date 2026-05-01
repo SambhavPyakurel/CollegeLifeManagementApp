@@ -51,6 +51,7 @@ class ResourcesScreen(BaseScreen):
             )
             empty.bind(size=lambda label, *_: setattr(label, "text_size", label.size))
             box.add_widget(empty)
+            self._apply_font_scale(box)
             return
 
         header = BoxLayout(size_hint_y=None, height=72)
@@ -64,7 +65,7 @@ class ResourcesScreen(BaseScreen):
                 text=f"{resource['name']}\n- {resource['desc']}",
                 color=self.app.text_color,
                 bold=True,
-                font_size=self.app.sp(17),
+                font_size="17sp",
                 halign="left",
                 valign="middle",
             )
@@ -75,7 +76,7 @@ class ResourcesScreen(BaseScreen):
                 text=resource["contact"],
                 color=self.app.text_color,
                 bold=True,
-                font_size=self.app.sp(17),
+                font_size="17sp",
                 size_hint_x=.42,
                 halign="left",
                 valign="middle",
@@ -91,11 +92,13 @@ class ResourcesScreen(BaseScreen):
                 background_color=(0, 0, 0, 0),
                 color=self.app.text_color,
                 bold=True,
-                font_size=self.app.sp(26),
+                font_size="26sp",
             )
             arrow.bind(on_release=lambda _, i=index: self.open_desc(i))
             row.add_widget(arrow)
             box.add_widget(row)
+        self._apply_font_scale(box)
+        self._apply_theme_colors(box)
 
     def open_desc(self, filtered_index):
         if filtered_index < len(self._filtered):

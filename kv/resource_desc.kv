@@ -20,7 +20,7 @@
                 text: 'Campus Resources'
                 color: app.text_color
                 bold: True
-                font_size: app.sp(30)
+                font_size: '30sp'
 
         BoxLayout:
             orientation: 'vertical'
@@ -35,7 +35,7 @@
                 background_color: app.header_color
                 color: app.text_color
                 bold: True
-                font_size: app.sp(24)
+                font_size: '24sp'
                 on_release: root.go('resources')
 
             BoxLayout:
@@ -54,7 +54,7 @@
                     text: 'Resource'
                     color: app.text_color
                     bold: True
-                    font_size: app.sp(28)
+                    font_size: '28sp'
                     size_hint_y: .18
                     halign: 'left'
                     text_size: self.size
@@ -62,7 +62,7 @@
                     id: resource_desc
                     text: '- description'
                     color: app.text_color
-                    font_size: app.sp(22)
+                    font_size: '22sp'
                     halign: 'left'
                     valign: 'top'
                     text_size: self.size
@@ -71,7 +71,7 @@
                     text: ''
                     color: app.text_color
                     bold: True
-                    font_size: app.sp(24)
+                    font_size: '24sp'
                     size_hint_y: .18
                     halign: 'left'
                     text_size: self.size

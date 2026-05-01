@@ -48,11 +48,13 @@ class SocialScreen(BaseScreen):
                 size_hint_y=None,
                 height=80,
                 color=self.app.muted_text_color,
-                font_size=self.app.sp(18),
+                font_size="18sp",
             ))
         elif len(events) < 3:
             for _ in range(3 - len(events)):
                 box.add_widget(Widget(size_hint_y=None, height=10))
+        self._apply_font_scale(box)
+        self._apply_theme_colors(box)
 
     def open_create(self):
         self.go("social_add")

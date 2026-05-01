@@ -68,10 +68,11 @@ class RoutineScreen(BaseScreen):
                 size_hint_y=None,
                 height=80,
                 color=self.app.muted_text_color,
-                font_size=self.app.sp(20),
+                font_size="20sp",
                 halign="center",
                 valign="middle",
             ))
+            self._apply_font_scale(box)
             return
 
         for index, task in enumerate(tasks):
@@ -99,7 +100,7 @@ class RoutineScreen(BaseScreen):
                 text=task.get("title", "Task"),
                 color=self.app.text_color,
                 bold=True,
-                font_size=self.app.sp(22),
+                font_size="22sp",
                 halign="left",
                 valign="middle",
             )
@@ -116,6 +117,8 @@ class RoutineScreen(BaseScreen):
             delete.bind(on_release=lambda _, slot=index: self.delete_task(slot))
             row.add_widget(delete)
             box.add_widget(row)
+        self._apply_font_scale(box)
+        self._apply_theme_colors(box)
 
     def delete_task(self, slot):
         if slot >= len(self._shown):
