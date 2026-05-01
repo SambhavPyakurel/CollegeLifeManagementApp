@@ -1,7 +1,5 @@
 __pycache__/
 *.py[cod]
 .venv/
-.kivy-check/
-docx_extract/
 screenshots/
 *.docx
