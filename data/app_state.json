@@ -1,0 +1,65 @@
+{
+  "settings": {
+    "dark_mode": false,
+    "font_scale": 0.85,
+    "theme": "teal"
+  },
+  "tasks": [],
+  "transactions": [],
+  "budget_limit": 750.0,
+  "resources": [
+    {
+      "name": "Counseling Services",
+      "desc": "Mental health support.",
+      "contact": "123-456-7890"
+    },
+    {
+      "name": "Writing Center",
+      "desc": "Essay and writing help.",
+      "contact": "012-465-9837"
+    },
+    {
+      "name": "Career Center",
+      "desc": "Resume and interview coaching.",
+      "contact": "555-210-1100"
+    },
+    {
+      "name": "Tutoring Lab",
+      "desc": "Free math and science tutoring.",
+      "contact": "555-220-3300"
+    },
+    {
+      "name": "Library Help Desk",
+      "desc": "Research and citation support.",
+      "contact": "555-998-1200"
+    },
+    {
+      "name": "IT Support",
+      "desc": "Account and device troubleshooting.",
+      "contact": "555-771-4411"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "Event 1",
+      "description": "Campus mixer",
+      "date": "2026-04-30",
+      "category": "sports"
+    },
+    {
+      "id": 2,
+      "title": "Event 2",
+      "description": "Study jam",
+      "date": "2026-05-01",
+      "category": "sports"
+    },
+    {
+      "id": 3,
+      "title": "Event 3",
+      "description": "Club fair",
+      "date": "2026-05-02",
+      "category": "stud_life"
+    }
+  ]
+}

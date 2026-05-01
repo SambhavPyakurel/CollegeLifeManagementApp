@@ -1,0 +1,77 @@
+<ResourceDescScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: .10
+            canvas.before:
+                Color:
+                    rgba: app.header_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Campus Resources'
+                color: app.text_color
+                bold: True
+                font_size: app.sp(30)
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [12, 28, 12, 28]
+            spacing: 24
+
+            Button:
+                text: '< Back'
+                size_hint: None, None
+                size: 194, 62
+                background_normal: ''
+                background_color: app.header_color
+                color: app.text_color
+                bold: True
+                font_size: app.sp(24)
+                on_release: root.go('resources')
+
+            BoxLayout:
+                orientation: 'vertical'
+                padding: [28, 24, 28, 24]
+                spacing: 18
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                Label:
+                    id: resource_title
+                    text: 'Resource'
+                    color: app.text_color
+                    bold: True
+                    font_size: app.sp(28)
+                    size_hint_y: .18
+                    halign: 'left'
+                    text_size: self.size
+                Label:
+                    id: resource_desc
+                    text: '- description'
+                    color: app.text_color
+                    font_size: app.sp(22)
+                    halign: 'left'
+                    valign: 'top'
+                    text_size: self.size
+                Label:
+                    id: resource_contact
+                    text: ''
+                    color: app.text_color
+                    bold: True
+                    font_size: app.sp(24)
+                    size_hint_y: .18
+                    halign: 'left'
+                    text_size: self.size

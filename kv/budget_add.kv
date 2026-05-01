@@ -1,0 +1,102 @@
+<BudgetAddScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: .10
+            canvas.before:
+                Color:
+                    rgba: app.header_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Budget Tracker'
+                color: app.text_color
+                bold: True
+                font_size: app.sp(32)
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [12, 40, 12, 40]
+            spacing: 24
+
+            BoxLayout:
+                orientation: 'vertical'
+                padding: [32, 24, 32, 24]
+                spacing: 20
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+
+                Label:
+                    text: 'Add Transaction'
+                    color: app.text_color
+                    bold: True
+                    font_size: app.sp(30)
+                    size_hint_y: .14
+                    halign: 'left'
+                    text_size: self.size
+
+                TextInput:
+                    id: category_input
+                    hint_text: 'Category'
+                    multiline: False
+                    background_color: (1,1,1,1)
+                    foreground_color: app.text_color
+                    hint_text_color: app.muted_text_color
+                    font_size: app.sp(22)
+                    size_hint_y: .16
+
+                TextInput:
+                    id: amount_input
+                    hint_text: 'Enter Amount'
+                    multiline: False
+                    input_filter: 'float'
+                    background_color: (1,1,1,1)
+                    foreground_color: app.text_color
+                    hint_text_color: app.muted_text_color
+                    font_size: app.sp(22)
+                    size_hint_y: .16
+
+                Widget:
+
+                BoxLayout:
+                    size_hint_y: .14
+                    spacing: 16
+                    Button:
+                        text: 'Confirm'
+                        background_normal: ''
+                        background_color: app.header_color
+                        color: app.text_color
+                        bold: True
+                        font_size: app.sp(22)
+                        on_release: root.confirm()
+                    Button:
+                        text: 'Cancel'
+                        background_normal: ''
+                        background_color: app.header_color
+                        color: app.text_color
+                        bold: True
+                        font_size: app.sp(22)
+                        on_release: root.cancel()
+
+            Button:
+                text: 'Delete Last Transaction'
+                size_hint_y: .10
+                background_normal: ''
+                background_color: (0.85,0.15,0.15,1)
+                color: (1,1,1,1)
+                bold: True
+                font_size: app.sp(20)
+                on_release: root.delete_last()

@@ -1,0 +1,306 @@
+<DashboardScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: .10
+            canvas.before:
+                Color:
+                    rgba: app.header_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Dashboard'
+                color: app.text_color
+                bold: True
+                font_size: '44sp'
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [12, 10, 12, 8]
+            spacing: 10
+
+            Label:
+                text: '[b]Good Morning![/b]\nHere\'s what\'s happening today.'
+                markup: True
+                color: app.text_color
+                size_hint_y: .10
+                font_size: '22sp'
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
+
+            GridLayout:
+                cols: 2
+                size_hint_y: .44
+                spacing: 12
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: 12
+                    spacing: 8
+                    canvas.before:
+                        Color:
+                            rgba: app.card_color
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [16]
+                    Label:
+                        text: "Today\'s Schedule"
+                        bold: True
+                        color: app.text_color
+                        font_size: '20sp'
+                        size_hint_y: .2
+                        halign: 'left'
+                        text_size: self.size
+                    Label:
+                        id: schedule_box
+                        text: 'Task 1\n\nTask 2\n\nTask 3'
+                        color: app.text_color
+                        font_size: '18sp'
+                        halign: 'left'
+                        valign: 'top'
+                        text_size: self.size
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: 12
+                    spacing: 6
+                    canvas.before:
+                        Color:
+                            rgba: app.card_color
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [16]
+                    Label:
+                        text: 'Budget'
+                        bold: True
+                        color: app.text_color
+                        font_size: '24sp'
+                        size_hint_y: .16
+                    Label:
+                        id: budget_text
+                        text: '$0.00'
+                        bold: True
+                        color: app.text_color
+                        font_size: '46sp'
+                        size_hint_y: .25
+                    Label:
+                        text: 'Current Balance'
+                        color: app.text_color
+                        font_size: '16sp'
+                        size_hint_y: .12
+                    Label:
+                        text: 'Weekly Budget'
+                        bold: True
+                        color: app.text_color
+                        font_size: '16sp'
+                        size_hint_y: .12
+                    ProgressBar:
+                        id: budget_progress
+                        max: 100
+                        size_hint_y: .08
+                    Label:
+                        id: budget_ratio
+                        text: '$0/$750'
+                        color: app.text_color
+                        font_size: '18sp'
+                        size_hint_y: .12
+
+            GridLayout:
+                cols: 2
+                size_hint_y: .34
+                spacing: 12
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: 12
+                    spacing: 8
+                    canvas.before:
+                        Color:
+                            rgba: app.card_color
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [16]
+                    BoxLayout:
+                        size_hint_y: .20
+                        Label:
+                            text: 'Events'
+                            bold: True
+                            color: app.text_color
+                            font_size: '22sp'
+                            halign: 'left'
+                            text_size: self.size
+                        Widget:
+                    Label:
+                        id: events_list
+                        text: 'Event 1\n\nEvent 2\n\nEvent 3'
+                        color: app.text_color
+                        font_size: '18sp'
+                        halign: 'left'
+                        valign: 'top'
+                        text_size: self.size
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: 12
+                    spacing: 10
+                    canvas.before:
+                        Color:
+                            rgba: app.card_color
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [24]
+                    Label:
+                        text: 'Timer'
+                        bold: True
+                        color: app.text_color
+                        font_size: '24sp'
+                        size_hint_y: .3
+                    BoxLayout:
+                        size_hint_y: .35
+                        padding: [8,0,8,0]
+                        spacing: 4
+                        canvas.before:
+                            Color:
+                                rgba: app.header_color
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [30]
+                        Button:
+                            background_normal: 'assets/play_btn.png'
+                            background_down: 'assets/play_btn.png'
+                            background_color: (1,1,1,1)
+                            border: (0,0,0,0)
+                            on_release: root.play_timer()
+                        Button:
+                            background_normal: 'assets/pause_btn.png'
+                            background_down: 'assets/pause_btn.png'
+                            background_color: (1,1,1,1)
+                            border: (0,0,0,0)
+                            on_release: root.pause_timer()
+                        Button:
+                            background_normal: 'assets/stop_btn.png'
+                            background_down: 'assets/stop_btn.png'
+                            background_color: (1,1,1,1)
+                            border: (0,0,0,0)
+                            on_release: root.stop_timer()
+                        Label:
+                            id: timer_label
+                            text:
+                                '0:00'
+                            color: (0.2,0.2,0.2,1)
+                            font_size: '34sp'
+
+        BoxLayout:
+            size_hint_y: None
+            height: 70
+            canvas.before:
+                Color:
+                    rgba: (0.20, 0.20, 0.20, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_dashboard.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('dashboard')
+                Button:
+                    text: 'Dashboard'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('dashboard')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_routine.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('routine')
+                Button:
+                    text: 'Routine'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('routine')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_budget.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('budget')
+                Button:
+                    text: 'Budget'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('budget')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_resources.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('resources')
+                Button:
+                    text: 'Resources'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('resources')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_events.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('events')
+                Button:
+                    text: 'Events'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('events')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_settings.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('settings')
+                Button:
+                    text: 'Settings'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('settings')

@@ -1,0 +1,365 @@
+<BudgetScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: .10
+            canvas.before:
+                Color:
+                    rgba: app.header_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Budget Tracker'
+                color: app.text_color
+                bold: True
+                font_size: '38sp'
+
+        BoxLayout:
+            size_hint_y: .10
+            padding: [0, 12, 12, 8]
+            Widget:
+            AutoFitButton:
+                text: '+ Add Transaction'
+                size_hint: None, None
+                size: 190, 44
+                background_normal: ''
+                background_color: (0.50, 0.73, 0.73, 1)
+                color: app.text_color
+                font_size: app.sp(14)
+                min_font_size: 9
+                horizontal_padding: 8
+                bold: True
+                halign: 'center'
+                valign: 'middle'
+                on_release: root.open_add()
+
+        GridLayout:
+            cols: 3
+            size_hint_y: .14
+            padding: [10, 0, 10, 0]
+            spacing: 10
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 8
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                Label:
+                    text: 'Current Balance'
+                    color: app.text_color
+                    bold: True
+                Label:
+                    id: current_balance
+                    text: '$0.00'
+                    color: app.text_color
+                    bold: True
+                    font_size: '34sp'
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 8
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                Label:
+                    text: 'Total Income'
+                    color: app.text_color
+                    bold: True
+                Label:
+                    id: total_income
+                    text: '$120.00'
+                    color: app.text_color
+                    bold: True
+                    font_size: '34sp'
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 8
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                Label:
+                    text: 'Total Expenses'
+                    color: app.text_color
+                    bold: True
+                Label:
+                    id: total_expenses
+                    text: '$0.00'
+                    color: app.text_color
+                    bold: True
+                    font_size: '34sp'
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .18
+            padding: [10,8,10,8]
+            canvas.before:
+                Color:
+                    rgba: app.card_color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [16]
+            Label:
+                text: 'Weekly Budget'
+                color: app.text_color
+                bold: True
+                font_size: '30sp'
+                halign: 'left'
+                text_size: self.size
+            BoxLayout:
+                size_hint_y: .30
+                Label:
+                    text: 'Spent this week'
+                    color: app.text_color
+                    halign: 'left'
+                    text_size: self.size
+                Label:
+                    id: weekly_spent
+                    text: '$0/$750'
+                    color: app.text_color
+                    halign: 'right'
+                    text_size: self.size
+            ProgressBar:
+                id: progress
+                max: 100
+                value: 0
+                size_hint_y: .18
+            Label:
+                id: remaining_text
+                text: '$750 remaining'
+                color: app.text_color
+                halign: 'left'
+                text_size: self.size
+
+        BoxLayout:
+            size_hint_y: .26
+            padding: [6,8,6,8]
+            spacing: 10
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 8
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [22]
+                Label:
+                    text: 'Set Budget Limit'
+                    color: app.text_color
+                    bold: True
+                    font_size: '24sp'
+                Button:
+                    id: limit_text
+                    text: '$750'
+                    color: app.text_color
+                    bold: True
+                    font_size: '42sp'
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.open_set_limit()
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 8
+                spacing: 4
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                Label:
+                    text: 'Spending by Category'
+                    color: app.text_color
+                    bold: True
+                    font_size: '24sp'
+                BoxLayout:
+                    BoxLayout:
+                        orientation: 'vertical'
+                        GridLayout:
+                            cols: 2
+                            size_hint_y: .25
+                            Image:
+                                id: ldot1
+                                source: ''
+                                size_hint_x: .15
+                            Label:
+                                id: ltxt1
+                                text: ''
+                                color: app.text_color
+                                halign: 'left'
+                                text_size: self.size
+                        GridLayout:
+                            cols: 2
+                            size_hint_y: .25
+                            Image:
+                                id: ldot2
+                                source: ''
+                                size_hint_x: .15
+                            Label:
+                                id: ltxt2
+                                text: ''
+                                color: app.text_color
+                                halign: 'left'
+                                text_size: self.size
+                        GridLayout:
+                            cols: 2
+                            size_hint_y: .25
+                            Image:
+                                id: ldot3
+                                source: ''
+                                size_hint_x: .15
+                            Label:
+                                id: ltxt3
+                                text: ''
+                                color: app.text_color
+                                halign: 'left'
+                                text_size: self.size
+                        GridLayout:
+                            cols: 2
+                            size_hint_y: .25
+                            Image:
+                                id: ldot4
+                                source: ''
+                                size_hint_x: .15
+                            Label:
+                                id: ltxt4
+                                text: ''
+                                color: app.text_color
+                                halign: 'left'
+                                text_size: self.size
+                    PieWidget:
+                        id: pie
+                        size_hint_x: .55
+
+        ScrollView:
+            size_hint_y: .10
+            do_scroll_x: False
+            GridLayout:
+                id: txn_list
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                padding: [10, 0, 10, 0]
+                spacing: 4
+
+        BoxLayout:
+            size_hint_y: None
+            height: 70
+            canvas.before:
+                Color:
+                    rgba: app.nav_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_dashboard.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('dashboard')
+                Button:
+                    text: 'Dashboard'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('dashboard')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_routine.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('routine')
+                Button:
+                    text: 'Routine'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('routine')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_budget.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('budget')
+                Button:
+                    text: 'Budget'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('budget')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_resources.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('resources')
+                Button:
+                    text: 'Resources'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('resources')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_events.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('events')
+                Button:
+                    text: 'Events'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('events')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_settings.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('settings')
+                Button:
+                    text: 'Settings'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('settings')

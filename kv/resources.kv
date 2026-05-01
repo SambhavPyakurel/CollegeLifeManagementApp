@@ -1,0 +1,184 @@
+<ResourcesScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: .10
+            canvas.before:
+                Color:
+                    rgba: app.header_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Campus Resources'
+                color: app.text_color
+                bold: True
+                font_size: '38sp'
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [12,10,12,8]
+            spacing: 10
+            Label:
+                text: 'Resources'
+                color: app.text_color
+                bold: True
+                font_size: '42sp'
+                size_hint_y: .11
+                halign: 'left'
+                text_size: self.size
+
+            BoxLayout:
+                size_hint_y: .10
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                TextInput:
+                    id: search
+                    hint_text: 'Search for a resource'
+                    multiline: False
+                    background_color: (0,0,0,0)
+                    foreground_color: app.text_color
+                    hint_text_color: (0.75,0.75,0.75,1)
+                    padding: [20, 18, 0, 0]
+                    font_size: '24sp'
+                    on_text: root.filter_resources(self.text)
+                Button:
+                    text: '>'
+                    color: app.text_color
+                    bold: True
+                    font_size: app.sp(32)
+                    size_hint_x: None
+                    width: 72
+                    background_normal: ''
+                    background_color: app.muted_text_color
+                    border: (0,0,0,0)
+
+            ScrollView:
+                size_hint_y: .66
+                do_scroll_x: False
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                BoxLayout:
+                    id: resource_list_box
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: [12, 12, 12, 12]
+                    spacing: 2
+
+        BoxLayout:
+            size_hint_y: None
+            height: 70
+            canvas.before:
+                Color:
+                    rgba: app.nav_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_dashboard.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('dashboard')
+                Button:
+                    text: 'Dashboard'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('dashboard')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_routine.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('routine')
+                Button:
+                    text: 'Routine'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('routine')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_budget.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('budget')
+                Button:
+                    text: 'Budget'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('budget')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_resources.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('resources')
+                Button:
+                    text: 'Resources'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('resources')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_events.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('events')
+                Button:
+                    text: 'Events'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('events')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_settings.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('settings')
+                Button:
+                    text: 'Settings'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('settings')

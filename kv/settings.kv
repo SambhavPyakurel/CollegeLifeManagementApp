@@ -1,0 +1,220 @@
+<SettingsScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: .10
+            canvas.before:
+                Color:
+                    rgba: app.header_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Settings'
+                color: app.text_color
+                bold: True
+                font_size: '40sp'
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [12, 10, 12, 8]
+            spacing: 14
+
+            Widget:
+                size_hint_y: .10
+
+            BoxLayout:
+                size_hint_y: .14
+                padding: [20, 8, 20, 8]
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                Label:
+                    text: 'Dark Mode'
+                    color: app.text_color
+                    bold: True
+                    font_size: '28sp'
+                    halign: 'left'
+                    text_size: self.size
+                BoxLayout:
+                    size_hint_x: .35
+                    canvas.before:
+                        Color:
+                            rgba: app.header_color
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [24]
+                    Switch:
+                        id: dark_mode
+                        on_active: root.save_settings()
+
+            BoxLayout:
+                size_hint_y: .14
+                padding: [20, 8, 20, 8]
+                spacing: 12
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                Label:
+                    text: 'Font Size'
+                    color: app.text_color
+                    bold: True
+                    font_size: '28sp'
+                Slider:
+                    id: font_size
+                    min: 1
+                    max: 10
+                    step: 1
+                    value: 1
+                    on_value: root.save_settings()
+                Label:
+                    id: font_val
+                    text: '1'
+                    color: app.text_color
+                    font_size: '20sp'
+                    size_hint_x: .15
+
+            Button:
+                text: 'Reset App'
+                size_hint_y: .16
+                background_normal: ''
+                background_color: (0,0,0,0)
+                color: (0.85,0.15,0.15,1)
+                bold: True
+                font_size: '48sp'
+                on_release: root.reset_app()
+                canvas.before:
+                    Color:
+                        rgba: (0.95,0.10,0.10,1)
+                    Line:
+                        rounded_rectangle: (self.x+2, self.y+2, self.width-4, self.height-4, 40)
+                        width: 4
+
+            Label:
+                text: 'Warning !\nThis deletes all your data !!'
+                size_hint_y: .18
+                color: (0.85,0.15,0.15,1)
+                bold: True
+                font_size: '26sp'
+                halign: 'left'
+                valign: 'top'
+                text_size: self.size
+
+            Widget:
+
+        BoxLayout:
+            size_hint_y: None
+            height: 70
+            canvas.before:
+                Color:
+                    rgba: (0.20, 0.20, 0.20, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_dashboard.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('dashboard')
+                Button:
+                    text: 'Dashboard'
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: (0.85,0.85,0.85,1)
+                    on_release: root.tab_go('dashboard')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_routine.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('routine')
+                Button:
+                    text: 'Routine'
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: (0.85,0.85,0.85,1)
+                    on_release: root.tab_go('routine')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_budget.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('budget')
+                Button:
+                    text: 'Budget'
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: (0.85,0.85,0.85,1)
+                    on_release: root.tab_go('budget')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_resources.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('resources')
+                Button:
+                    text: 'Resources'
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: (0.85,0.85,0.85,1)
+                    on_release: root.tab_go('resources')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_events.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('events')
+                Button:
+                    text: 'Events'
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: (0.85,0.85,0.85,1)
+                    on_release: root.tab_go('events')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_settings.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('settings')
+                Button:
+                    text: 'Settings'
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: (0.85,0.85,0.85,1)
+                    on_release: root.tab_go('settings')

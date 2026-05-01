@@ -1,0 +1,224 @@
+<SocialScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: .10
+            canvas.before:
+                Color:
+                    rgba: app.header_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Social Hub'
+                color: app.text_color
+                bold: True
+                font_size: '40sp'
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [12,10,12,8]
+            spacing: 10
+            AnchorLayout:
+                size_hint_y: .12
+                anchor_x: 'center'
+                AutoFitButton:
+                    text: '+ Create Event'
+                    size_hint: None, None
+                    size: 198, 60
+                    background_normal: ''
+                    background_color: (0.50, 0.73, 0.73, 1)
+                    color: app.text_color
+                    font_size: app.sp(18)
+                    min_font_size: 9
+                    horizontal_padding: 8
+                    bold: True
+                    halign: 'center'
+                    valign: 'middle'
+                    on_release: root.open_create()
+
+            GridLayout:
+                cols: 4
+                size_hint_y: .10
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                BoxLayout:
+                    CheckBox:
+                        id: filter_all
+                        group: 'event_filter'
+                        active: True
+                        on_active: root.show_all() if self.active else None
+                    Label:
+                        text: 'All'
+                        color: app.text_color
+                        bold: True
+                        font_size: app.sp(16)
+                BoxLayout:
+                    CheckBox:
+                        id: filter_sports
+                        group: 'event_filter'
+                        on_active: root.apply_filter('sports') if self.active else None
+                    Label:
+                        text: 'Sports'
+                        color: app.text_color
+                        bold: True
+                        font_size: app.sp(16)
+                BoxLayout:
+                    CheckBox:
+                        id: filter_academic
+                        group: 'event_filter'
+                        on_active: root.apply_filter('academic') if self.active else None
+                    Label:
+                        text: 'Academic'
+                        color: app.text_color
+                        bold: True
+                        font_size: app.sp(15)
+                BoxLayout:
+                    CheckBox:
+                        id: filter_life
+                        group: 'event_filter'
+                        on_active: root.apply_filter('stud_life') if self.active else None
+                    Label:
+                        text: 'Life'
+                        color: app.text_color
+                        bold: True
+                        font_size: app.sp(16)
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: .62
+                padding: [12,12,12,12]
+                spacing: 10
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+                Label:
+                    text: 'Event Feed'
+                    color: app.text_color
+                    bold: True
+                    font_size: '28sp'
+                    size_hint_y: .14
+                ScrollView:
+                    do_scroll_x: False
+                    GridLayout:
+                        id: event_list_box
+                        cols: 1
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: 12
+
+        BoxLayout:
+            size_hint_y: None
+            height: 70
+            canvas.before:
+                Color:
+                    rgba: app.nav_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_dashboard.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('dashboard')
+                Button:
+                    text: 'Dashboard'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('dashboard')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_routine.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('routine')
+                Button:
+                    text: 'Routine'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('routine')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_budget.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('budget')
+                Button:
+                    text: 'Budget'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('budget')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_resources.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('resources')
+                Button:
+                    text: 'Resources'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('resources')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_events.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('events')
+                Button:
+                    text: 'Events'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('events')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_settings.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('settings')
+                Button:
+                    text: 'Settings'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('settings')

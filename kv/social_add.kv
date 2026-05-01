@@ -1,0 +1,123 @@
+<SocialAddScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: .10
+            canvas.before:
+                Color:
+                    rgba: app.header_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Social Hub'
+                color: app.text_color
+                bold: True
+                font_size: app.sp(32)
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [12, 40, 12, 40]
+            spacing: 24
+
+            BoxLayout:
+                orientation: 'vertical'
+                padding: [32, 24, 32, 24]
+                spacing: 16
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+
+                Label:
+                    text: 'Create Event'
+                    color: app.text_color
+                    size_hint_y: .14
+                    bold: True
+                    font_size: app.sp(30)
+                    halign: 'left'
+                    text_size: self.size
+
+                TextInput:
+                    id: event_title
+                    hint_text: 'Event Title'
+                    multiline: False
+                    background_color: (1,1,1,1)
+                    foreground_color: app.text_color
+                    hint_text_color: app.muted_text_color
+                    font_size: app.sp(22)
+                    size_hint_y: .14
+
+                TextInput:
+                    id: event_desc
+                    hint_text: 'Details'
+                    background_color: (1,1,1,1)
+                    foreground_color: app.text_color
+                    hint_text_color: app.muted_text_color
+                    font_size: app.sp(22)
+                    size_hint_y: .26
+
+                Label:
+                    text: 'Category'
+                    color: app.text_color
+                    size_hint_y: .08
+                    bold: True
+                    font_size: app.sp(20)
+                    halign: 'left'
+                    text_size: self.size
+
+                BoxLayout:
+                    size_hint_y: .10
+                    spacing: 10
+                    BoxLayout:
+                        CheckBox:
+                            id: cat_sports
+                            group: 'cat'
+                            active: True
+                        Label:
+                            text: 'sports'
+                            color: app.text_color
+                    BoxLayout:
+                        CheckBox:
+                            id: cat_academic
+                            group: 'cat'
+                        Label:
+                            text: 'academic'
+                            color: app.text_color
+                    BoxLayout:
+                        CheckBox:
+                            id: cat_life
+                            group: 'cat'
+                        Label:
+                            text: 'stud_life'
+                            color: app.text_color
+
+                BoxLayout:
+                    size_hint_y: .14
+                    spacing: 16
+                    Button:
+                        text: 'Confirm'
+                        background_normal: ''
+                        background_color: app.header_color
+                        color: app.text_color
+                        bold: True
+                        font_size: app.sp(22)
+                        on_release: root.confirm()
+                    Button:
+                        text: 'Cancel'
+                        background_normal: ''
+                        background_color: app.header_color
+                        color: app.text_color
+                        bold: True
+                        font_size: app.sp(22)
+                        on_release: root.cancel()

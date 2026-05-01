@@ -1,0 +1,279 @@
+<RoutineScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: .10
+            canvas.before:
+                Color:
+                    rgba: app.header_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Routine'
+                color: app.text_color
+                bold: True
+                font_size: app.sp(32)
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [12, 10, 12, 8]
+            spacing: 10
+
+            AnchorLayout:
+                size_hint_y: .10
+                anchor_x: 'right'
+                AutoFitButton:
+                    text: '+ Add Task'
+                    size_hint: None, None
+                    size: 132, 46
+                    background_normal: ''
+                    background_color: app.header_color
+                    color: app.text_color
+                    font_size: app.sp(14)
+                    min_font_size: 9
+                    horizontal_padding: 8
+                    bold: True
+                    halign: 'center'
+                    valign: 'middle'
+                    on_release: root.open_add()
+
+            BoxLayout:
+                size_hint_y: .09
+                spacing: 14
+                BoxLayout:
+                    spacing: 6
+                    Image:
+                        source: 'assets/blue.png'
+                        size_hint_x: .2
+                    Label:
+                        text: 'Class'
+                        color: app.text_color
+                        font_size: app.sp(16)
+                BoxLayout:
+                    spacing: 6
+                    Image:
+                        source: 'assets/red.png'
+                        size_hint_x: .2
+                    Label:
+                        text: 'Study'
+                        color: app.text_color
+                        font_size: app.sp(16)
+                BoxLayout:
+                    spacing: 6
+                    Image:
+                        source: 'assets/yellow.png'
+                        size_hint_x: .2
+                    Label:
+                        text: 'Work'
+                        color: app.text_color
+                        font_size: app.sp(16)
+                BoxLayout:
+                    spacing: 6
+                    Image:
+                        source: 'assets/green.png'
+                        size_hint_x: .2
+                    Label:
+                        text: 'Other'
+                        color: app.text_color
+                        font_size: app.sp(16)
+
+            GridLayout:
+                cols: 7
+                size_hint_y: .08
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [24]
+                Button:
+                    id: day_Sun
+                    text: 'Sun'
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: app.text_color
+                    on_release: root.select_day('Sun')
+                Button:
+                    id: day_Mon
+                    text: 'Mon'
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: app.text_color
+                    on_release: root.select_day('Mon')
+                Button:
+                    id: day_Tue
+                    text: 'Tue'
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: app.text_color
+                    on_release: root.select_day('Tue')
+                Button:
+                    id: day_Wed
+                    text: 'Wed'
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: app.text_color
+                    on_release: root.select_day('Wed')
+                Button:
+                    id: day_Thu
+                    text: 'Thu'
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: app.text_color
+                    on_release: root.select_day('Thu')
+                Button:
+                    id: day_Fri
+                    text: 'Fri'
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: app.text_color
+                    on_release: root.select_day('Fri')
+                Button:
+                    id: day_Sat
+                    text: 'Sat'
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    color: app.text_color
+                    on_release: root.select_day('Sat')
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: .63
+                padding: [12, 12, 12, 12]
+                spacing: 16
+                canvas.before:
+                    Color:
+                        rgba: app.card_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [16]
+
+                Label:
+                    id: day_title
+                    text: "Wednesday's Schedule"
+                    color: app.text_color
+                    bold: True
+                    font_size: app.sp(24)
+                    size_hint_y: .18
+                    halign: 'left'
+                    text_size: self.size
+
+                ScrollView:
+                    do_scroll_x: False
+                    GridLayout:
+                        id: task_list_box
+                        cols: 1
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: 12
+
+        BoxLayout:
+            size_hint_y: None
+            height: 70
+            canvas.before:
+                Color:
+                    rgba: app.nav_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_dashboard.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('dashboard')
+                Button:
+                    text: 'Dashboard'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('dashboard')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_routine.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('routine')
+                Button:
+                    text: 'Routine'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('routine')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_budget.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('budget')
+                Button:
+                    text: 'Budget'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('budget')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_resources.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('resources')
+                Button:
+                    text: 'Resources'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('resources')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_events.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('events')
+                Button:
+                    text: 'Events'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('events')
+            BoxLayout:
+                orientation: 'vertical'
+                NavIconButton:
+                    source: 'assets/nav_settings.png'
+                    size_hint_y: .66
+                    fit_mode: 'contain'
+                    mipmap: True
+                    on_release: root.tab_go('settings')
+                Button:
+                    text: 'Settings'
+                    color: (0.85,0.85,0.85,1)
+                    size_hint_y: .34
+                    background_normal: ''
+                    background_color: (0,0,0,0)
+                    on_release: root.tab_go('settings')
