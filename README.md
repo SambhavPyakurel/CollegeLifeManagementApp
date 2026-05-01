@@ -5,7 +5,7 @@ A Kivy desktop app for helping college students manage daily routines, budgets, 
 ## Technology Versions
 
 - Python: 3.11 or 3.12, official 64-bit CPython recommended
-- Tested with Python: 3.12.13
+- Tested with Python: 3.12.10
 - Kivy: 2.3.0
 
 Avoid Python 3.13 or MSYS2/MinGW Python for this project. If pip cannot find a Kivy wheel, it may try to build Kivy from source and fail while installing build dependencies.
