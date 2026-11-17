@@ -155,15 +155,3 @@ This is a functional student portfolio prototype with several areas still open f
 - **Distribution:** There is no login, cloud sync, packaged installer, or mobile build configuration. No automated test suite is currently included.
 
 Useful next steps include stronger input validation, dated transactions and true weekly totals, editable event dates, storage tests, and a packaged desktop release.
-
-## Can this go on my resume?
-
-**Yes—as a Python desktop application or student software project**, provided you can explain the implementation and accurately describe your own contribution. It demonstrates multi-screen GUI development, reusable widgets, event-driven programming, data visualization, and persistent local storage.
-
-Suggested resume entry (adjust it to match the work you personally completed):
-
-**College Life Management App | Python, Kivy, JSON**
-
-- Built a six-section desktop application for student routines, expense tracking, local events, and campus resource lookup, with JSON persistence, category-based spending visualization, a focus timer, and saved appearance preferences.
-
-Describe it as a local desktop prototype. Avoid claiming real campus integration, production deployment, user adoption, or measured performance improvements without evidence. Adding automated tests, stronger validation, and a downloadable release would make it a stronger portfolio project.
